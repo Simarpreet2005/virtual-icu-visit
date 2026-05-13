@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none !important;
+}
+
+@layer base {
+    body {
+        @apply font-sans antialiased text-slate-900 bg-slate-50;
+        background-image: radial-gradient(at 0% 0%, hsla(220,100%,95%,1) 0, transparent 50%),
+                          radial-gradient(at 50% 0%, hsla(190,100%,95%,1) 0, transparent 50%),
+                          radial-gradient(at 100% 0%, hsla(220,100%,95%,1) 0, transparent 50%);
+        min-height: 100vh;
+    }
+}
+
+@layer components {
+    .glass-card {
+        @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-2xl rounded-2xl;
+    }
+
+    .glass-panel {
+        @apply bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl;
+    }
+
+    .btn-primary {
+        @apply px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-blue-200 hover:-translate-y-0.5 active:translate-y-0;
+    }
+
+    .btn-secondary {
+        @apply px-6 py-2.5 bg-white/80 hover:bg-white text-slate-700 border border-slate-200 rounded-xl font-medium transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5;
+    }
+
+    .input-glass {
+        @apply bg-white/50 border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all;
+    }
+
+    .sidebar-link {
+        @apply flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 text-slate-600 hover:bg-blue-50 hover:text-blue-600;
+    }
+
+    .sidebar-link-active {
+        @apply bg-blue-600 text-white shadow-lg shadow-blue-200 hover:bg-blue-700 hover:text-white;
+    }
+}
+
+/* Background Animated Blobs */
+.blob {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, rgba(37, 99, 235, 0) 70%);
+    filter: blur(80px);
+    z-index: -1;
+    animation: move 20s infinite alternate;
+}
+
+@keyframes move {
+    from { transform: translate(-10%, -10%); }
+    to { transform: translate(10%, 10%); }
+}
