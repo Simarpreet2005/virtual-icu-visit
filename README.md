@@ -191,22 +191,6 @@ All API routes require an authenticated session:
 - `GET /api/appointments` - scoped by role.
 - `GET /api/notifications` - unread notifications for the current user.
 
-## Demo credentials
-
-After `php artisan migrate:fresh --seed`:
-
-| Role | Email | Password |
-| --- | --- | --- |
-| Admin | `admin@example.com` | `password` |
-| Doctor | `doctor1@example.com` | `password` |
-| Doctor | `doctor2@example.com` | `password` |
-| Nurse | `nurse1@example.com` | `password` |
-| Nurse | `nurse2@example.com` | `password` |
-| Family | `family1@example.com` | `password` |
-| Family | `family2@example.com` | `password` |
-
-Change all demo passwords before any real deployment.
-
 ## Demo flow
 
 1. Start the app with `composer run dev` or with `php artisan serve` and `npm run dev`.
@@ -238,10 +222,6 @@ composer test
 - If MongoDB is unavailable, `LoggingService` writes a warning to Laravel logs and the web request continues.
 - The admin activity screen reports connection problems instead of failing the whole dashboard.
 - If Composer reports a missing MongoDB extension, install/enable `ext-mongodb` for your PHP runtime.
-
-## License
-
-MIT.
 
 ## Acknowledgements
 
