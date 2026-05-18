@@ -5,10 +5,12 @@
         <div class="flex justify-between items-center flex-wrap gap-4">
             <div>
                 <h2 class="text-2xl font-bold text-slate-800 tracking-tight">Virtual ICU Visit</h2>
-                <p class="text-slate-500">Patient: {{ $appointment->patient->name }} | {{ $appointment->user->name }} (Family)</p>
+                <p class="text-slate-500">Patient: {{ $appointment->patient->name }} | {{ $appointment->user->name }}
+                    (Family)</p>
             </div>
             <div class="flex items-center gap-4">
-                <a href="{{ route('dashboard') }}" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 font-bold hover:bg-slate-200 transition-colors">
+                <a href="{{ route('dashboard') }}"
+                    class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 font-bold hover:bg-slate-200 transition-colors">
                     Back to Dashboard
                 </a>
             </div>

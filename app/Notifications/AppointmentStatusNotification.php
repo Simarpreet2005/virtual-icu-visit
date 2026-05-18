@@ -22,7 +22,7 @@ class AppointmentStatusNotification extends Notification
 
     public function via($notifiable): array
     {
-        return ['database'];
+        return ['database', 'broadcast'];
     }
 
     public function toArray($notifiable): array
@@ -32,6 +32,15 @@ class AppointmentStatusNotification extends Notification
             'patient_name' => $this->appointment->patient->name,
             'status' => $this->status,
             'message' => "Your visit request for {$this->appointment->patient->name} has been {$this->status}.",
+            'action_url' => $this->status === 'approved' ? route('video.call', $this->appointment->room_id) : route('dashboard'),
+        ];
+    }
+
+    public function toBroadcast($notifiable): array
+    {
+        return [
+            'message' => "Your visit request for {$this->appointment->patient->name} has been {$this->status}.",
+            'status' => $this->status,
             'action_url' => $this->status === 'approved' ? route('video.call', $this->appointment->room_id) : route('dashboard'),
         ];
     }

@@ -115,11 +115,12 @@ class DashboardController extends Controller
     private function familyDashboard()
     {
         $user = auth()->user();
-        $appointments = Appointment::where('user_id', $user->id)->with('patient')->orderBy('scheduled_at', 'desc')->get();
+        $appointments = Appointment::where('user_id', $user->id)->with(['patient.reports'])->orderBy('scheduled_at', 'desc')->get();
         $notifications = $user->unreadNotifications->take(5);
 
         $linkedPatients = Patient::query()
             ->where('family_user_id', $user->id)
+            ->with('reports')
             ->orderBy('name')
             ->get();
 
